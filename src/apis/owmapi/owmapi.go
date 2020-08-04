@@ -10,20 +10,23 @@ import (
 	"time"
 )
 
+//AreaForecast represents a collection of forecasts
+type AreaForecast []Forecast
+
+//Forecast represents a list of weathers for one given location
+type Forecast []Weather
+
 //Weather represents simple information about the weather at a given time.
 type Weather struct {
 	Datetime      time.Time //Unix DT in the host's local tz
-	Temp          float32
+	Temp          float64
 	Precipitation bool
 }
-
-//Forecast is a wrapper around a list of Weathers
-type Forecast []Weather
 
 //Type needed to unmarshal a weather JSON response
 type weatherResponse struct {
 	Weather []struct{ Id int }
-	Main    struct{ Feels_like float32 }
+	Main    struct{ Feels_like float64 }
 	Dt      int
 }
 
@@ -38,6 +41,36 @@ const (
 )
 
 var client = &http.Client{Timeout: 120 * time.Second}
+
+//ListTemps returns a two-dimensional array of temps from the weathers in an AreaForecast.
+func (a AreaForecast) ListTemps() [][]float64 {
+	temps := make([][]float64, len(a))
+	for i, forecast := range a {
+		for _, weather := range forecast {
+			temps[i] = append(temps[i], weather.Temp)
+		}
+	}
+	return temps
+}
+
+//Get returns an array of forecasts, one for each locationId passed in.
+func Get(apiKey string, locationIds []string) (AreaForecast, error) {
+	response := make(AreaForecast, len(locationIds))
+	for i, id := range locationIds {
+		currentWeather, err := getCurrentWeather(apiKey, id)
+		if err != nil {
+			return AreaForecast{}, err
+		}
+		futureWeather, err := getFutureWeather(apiKey, id)
+		if err != nil {
+			return AreaForecast{}, err
+		}
+
+		response[i] = append(Forecast{currentWeather}, futureWeather...)
+	}
+
+	return response, nil
+}
 
 //Get the current weather as a weather object
 func getCurrentWeather(apiKey string, locationID string) (Weather, error) {
@@ -73,10 +106,10 @@ func getCurrentWeather(apiKey string, locationID string) (Weather, error) {
 }
 
 //Get the current forecast as a Forecast object
-func getForecast(apiKey string, locationID string) (Forecast, error) {
+func getFutureWeather(apiKey string, locationID string) ([]Weather, error) {
 	resp, err := getOpenWeatherMapPayload(apiKey, locationID, forecast)
 	if err != nil {
-		return Forecast{}, err
+		return []Weather{}, err
 	}
 	defer resp.Body.Close()
 
@@ -84,12 +117,12 @@ func getForecast(apiKey string, locationID string) (Forecast, error) {
 	forecast := &forecastResponse{}
 	response, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return Forecast{}, err
+		return []Weather{}, err
 	}
 	err = json.Unmarshal(response, forecast)
 
 	//Take the unmarshaled forecastResponse and load it into a Forecast
-	weatherList := make(Forecast, len(forecast.List))
+	weatherList := make([]Weather, len(forecast.List))
 	for i, prediction := range forecast.List {
 		precipitation := false
 		if prediction.Weather[0].Id < 700 {
@@ -125,6 +158,12 @@ func getOpenWeatherMapPayload(apiKey string, locationID string, requestType stri
 	if err != nil {
 		return &http.Response{}, err
 	}
+
+	sleepTime, err := time.ParseDuration("1s")
+	if err != nil {
+		return &http.Response{}, err
+	}
+	time.Sleep(sleepTime) //Guarantees we won't request more than 60 API calls per minute, staying in the free tier
 
 	return resp, nil
 }
