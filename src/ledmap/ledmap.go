@@ -28,29 +28,18 @@ func New(filler ColorFiller, initialPause int, subsequentPause int) *LedMap {
 }
 
 //StartMap initializes the map and starts the LED cycle.
-func (l *LedMap) StartMap(apiKey string, locationIds []string, fadeSteps int) error {
-	resp, err := l.api.Get(apiKey, locationIds)
-	if err != nil {
-		return err
-	}
-	colors, err := l.compatibility.GetColors(resp, fadeSteps)
-	if err != nil {
-		return err
-	}
-	for {
-		for k := 0; k < len(colors[0]); k++ {
-			for j := 0; j < fadeSteps; j++ {
-				for i, locationColors := range colors {
-					l.leds.Set(i, locationColors[k][j])
-					if i == 0 {
-						time.Sleep(15 * time.Second)
-					} else {
-
-						time.Sleep(5 * time.Second)
-					}
-				}
-				l.leds.Render()
-			}
+func (l *LedMap) StartMap(colors [][][]int) {
+	for i, colorStrandSet := range colors {
+		//Set initial color in group, then wait the prescribed amount of time
+		l.leds.Fill(colors[i][0])
+		if i == 0 {
+			time.Sleep(time.Duration(l.initialPause) * time.Second)
+		} else {
+			time.Sleep(time.Duration(l.subsequentPause) * time.Second)
+		}
+		for j := 1; j < len(colorStrandSet); j++ {
+			l.leds.Fill(colorStrandSet[j])
+			//May have to add a very short sleep here, depending on how fast the LEDS end up fading
 		}
 	}
 }
