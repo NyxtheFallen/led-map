@@ -1,0 +1,98 @@
+{
+  "0": {
+    "locationId": "4957003",
+    "city": "Augusta",
+    "state": "Maine",
+    "country": "United States"
+  },
+  "1": {
+    "locationId": "5238685",
+    "city": "Montpelier",
+    "state": "Vermont",
+    "country": "United States"
+  },
+  "2": {
+    "locationId": "5084868",
+    "city": "Concord",
+    "state": "New Hampshire",
+    "country": "United States"
+  },
+  "3": {
+    "locationId": "4930956",
+    "city": "Boston",
+    "state": "Massachusetts",
+    "country": "United States"
+  },
+  "4": {
+    "locationId": "5224151",
+    "city": "Providence",
+    "state": "Rhode Island",
+    "country": "United States"
+  },
+  "6": {
+    "locationId": "4835797",
+    "city": "Hartford",
+    "state": "Connecticut",
+    "country": "United States"
+  },
+  "7": {
+    "locationId": "5106834",
+    "city": "Albany",
+    "state": "New York",
+    "country": "United States"
+  },
+  "8": {
+    "locationId": "5128638",
+    "city": "New York",
+    "state": "New York",
+    "country": "United States"
+  },
+  "9": {
+    "locationId": "5105496",
+    "city": "Trenton",
+    "state": "New Jersey",
+    "country": "United States"
+  },
+  "10": {
+    "locationId": "4560349",
+    "city": "Philadelphia",
+    "state": "Pennsylvania",
+    "country": "United States"
+  },
+  "11": {
+    "locationId": "5192726",
+    "city": "Harrisburg",
+    "state": "Pennsylvania",
+    "country": "United States"
+  },
+  "12": {
+    "locationId": "4347778",
+    "city": "Baltimore",
+    "state": "Maryland",
+    "country": "United States"
+  },
+  "13": {
+    "locationId": "4142290",
+    "city": "Dover",
+    "state": "Delaware",
+    "country": "United States"
+  },
+  "14": {
+    "locationId": "4791259",
+    "city": "Virginia Beach",
+    "state": "Virginia",
+    "country": "United States"
+  },
+  "15": {
+    "locationId": "4781708",
+    "city": "Richmond",
+    "state": "Virginia",
+    "country": "United States"
+  },
+  "16": {
+    "locationId": "4487042",
+    "city": "Raleigh",
+    "state": "North Carolina",
+    "country": "United States"
+  }
+}
