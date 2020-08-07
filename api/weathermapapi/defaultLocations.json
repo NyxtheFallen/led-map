@@ -29,70 +29,136 @@
     "state": "Rhode Island",
     "country": "United States"
   },
-  "6": {
+  "5": {
     "locationId": "4835797",
     "city": "Hartford",
     "state": "Connecticut",
     "country": "United States"
   },
-  "7": {
+  "6": {
     "locationId": "5106834",
     "city": "Albany",
     "state": "New York",
     "country": "United States"
   },
-  "8": {
+  "7": {
     "locationId": "5128638",
     "city": "New York",
     "state": "New York",
     "country": "United States"
   },
-  "9": {
+  "8": {
     "locationId": "5105496",
     "city": "Trenton",
     "state": "New Jersey",
     "country": "United States"
   },
-  "10": {
+  "9": {
     "locationId": "4560349",
     "city": "Philadelphia",
     "state": "Pennsylvania",
     "country": "United States"
   },
-  "11": {
+  "10": {
     "locationId": "5192726",
     "city": "Harrisburg",
     "state": "Pennsylvania",
     "country": "United States"
   },
-  "12": {
+  "11": {
     "locationId": "4347778",
     "city": "Baltimore",
     "state": "Maryland",
     "country": "United States"
   },
-  "13": {
+  "12": {
     "locationId": "4142290",
     "city": "Dover",
     "state": "Delaware",
     "country": "United States"
   },
-  "14": {
+  "13": {
     "locationId": "4791259",
     "city": "Virginia Beach",
     "state": "Virginia",
     "country": "United States"
   },
-  "15": {
+  "14": {
     "locationId": "4781708",
     "city": "Richmond",
     "state": "Virginia",
     "country": "United States"
   },
-  "16": {
+  "15": {
     "locationId": "4487042",
     "city": "Raleigh",
     "state": "North Carolina",
+    "country": "United States"
+  },
+  "16": {
+    "locationId": "4460243",
+    "city": "Charlotte",
+    "state": "North Carolina",
+    "country": "United States"
+  },
+  "17": {
+    "locationId": "4575352",
+    "city": "Columbia",
+    "state": "South Carolina",
+    "country": "United States"
+  },
+  "18": {
+    "locationId": "4574324",
+    "city": "Charleston",
+    "state": "South Carolina",
+    "country": "United States"
+  },
+  "19": {
+    "locationId": "4221552",
+    "city": "Savannah",
+    "state": "Georgia",
+    "country": "United States"
+  },
+  "20": {
+    "locationId": "4174757",
+    "city": "Tampa",
+    "state": "Florida",
+    "country": "United States"
+  },
+  "21": {
+    "locationId": "4174715",
+    "city": "Tallahassee",
+    "state": "Florida",
+    "country": "United States"
+  },
+  "22": {
+    "locationId": "4076784",
+    "city": "Montgomery",
+    "state": "Alabama",
+    "country": "United States"
+  },
+  "23": {
+    "locationId": "4076784",
+    "city": "Atlanta",
+    "state": "Georgia",
+    "country": "United States"
+  },
+  "24": {
+    "locationId": "4076784",
+    "city": "Birmingham",
+    "state": "Alabama",
+    "country": "United States"
+  },
+  "25": {
+    "locationId": "4076784",
+    "city": "Nashville",
+    "state": "Tennessee",
+    "country": "United States"
+  },
+  "26": {
+    "locationId": "4076784",
+    "city": "Bowling Green",
+    "state": "Kentucky",
     "country": "United States"
   }
 }

@@ -41,7 +41,7 @@ func (l *LedMap) StartMap(colors [][][]int) {
 		for j := 1; j < len(colorStrandSet); j++ {
 			l.leds.Fill(colorStrandSet[j])
 			l.leds.Render()
-			time.Sleep(time.Duration(50) * time.Millisecond)
+			time.Sleep(time.Duration(25) * time.Millisecond)
 			//May have to add a very short sleep here, depending on how fast the LEDS end up fading
 		}
 	}
